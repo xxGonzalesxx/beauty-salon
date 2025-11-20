@@ -1,15 +1,15 @@
--- Услуги салона
-INSERT INTO services (id, name, description, price, duration, category) VALUES
-(1, 'Стрижка женская', 'Модная стрижка с укладкой от профессионального стилиста', 1500.00, 60, 'HAIR'),
-(2, 'Мужская стрижка', 'Стрижка машинкой и ножницами с оформлением бороды', 800.00, 30, 'HAIR'),
-(3, 'Окрашивание волос', 'Стойкое окрашивание премиум краской с уходом', 3000.00, 120, 'HAIR'),
-(4, 'Мелирование', 'Частичное или полное мелирование с тонированием', 2500.00, 90, 'HAIR'),
-(5, 'Маникюр классический', 'Аппаратный маникюр с покрытием лаком', 1200.00, 90, 'NAILS'),
-(6, 'Маникюр с дизайном', 'Маникюр с художественным дизайном и стемпингом', 1800.00, 120, 'NAILS'),
-(7, 'Педикюр', 'Комплексный уход за стопами с парафинотерапией', 1500.00, 60, 'NAILS'),
-(8, 'Наращивание ресниц', 'Объемное наращивание ресниц 2D-3D объем', 2000.00, 90, 'EYES'),
-(9, 'Макияж дневной', 'Естественный дневной макияж с консультацией', 1500.00, 60, 'MAKEUP'),
-(10, 'Макияж вечерний', 'Вечерний макияж для особых случаев с фотосессией', 2500.00, 90, 'MAKEUP');
+-- Услуги салона с фото
+INSERT INTO services (id, name, description, price, duration, category, photo_url) VALUES
+(1, 'Стрижка женская', 'Модная стрижка с укладкой от профессионального стилиста', 1500.00, 60, 'HAIR', '/images/service-hair.jpg'),
+(2, 'Мужская стрижка', 'Стрижка машинкой и ножницами с оформлением бороды', 800.00, 30, 'HAIR', '/images/service-hair.jpg'),
+(3, 'Окрашивание волос', 'Стойкое окрашивание премиум краской с уходом', 3000.00, 120, 'HAIR', '/images/service-hair.jpg'),
+(4, 'Мелирование', 'Частичное или полное мелирование с тонированием', 2500.00, 90, 'HAIR', '/images/service-hair.jpg'),
+(5, 'Маникюр классический', 'Аппаратный маникюр с покрытием лаком', 1200.00, 90, 'NAILS', '/images/service-nails.jpg'),
+(6, 'Маникюр с дизайном', 'Маникюр с художественным дизайном и стемпингом', 1800.00, 120, 'NAILS', '/images/service-nails.jpg'),
+(7, 'Педикюр', 'Комплексный уход за стопами с парафинотерапией', 1500.00, 60, 'NAILS', '/images/service-nails.jpg'),
+(8, 'Наращивание ресниц', 'Объемное наращивание ресниц 2D-3D объем', 2000.00, 90, 'EYES', '/images/service-makeup.jpg'),
+(9, 'Макияж дневной', 'Естественный дневной макияж с консультацией', 1500.00, 60, 'MAKEUP', '/images/service-makeup.jpg'),
+(10, 'Макияж вечерний', 'Вечерний макияж для особых случаев с фотосессией', 2500.00, 90, 'MAKEUP', '/images/service-makeup.jpg');
 
 -- Мастера
 INSERT INTO master (id, first_name, last_name, specialization, phone, email, photo_url, description) VALUES
@@ -27,12 +27,12 @@ INSERT INTO master_services (master_id, service_id) VALUES
 (4, 2),
 (5, 8);
 
--- Клиенты
+-- Клиенты (реальные BCrypt пароли для "password123")
 INSERT INTO client (id, first_name, last_name, email, phone, password, role) VALUES
-(1, 'Ольга', 'Смирнова', 'olga@test.ru', '+7-999-111-11-11', '$2a$10$8S1.6V5rJ7k3h2H8q9XZz.uWcLmNpQrT1yB3vC6dE7fG8hJ9iK0lM', 'CLIENT'),
-(2, 'Дмитрий', 'Васильев', 'dmitry@test.ru', '+7-999-222-22-22', '$2a$10$9T2.7W6K8l4i3I9r0Y1A0.vXdMnOqRsU2zC4wD7eF8gH9iJ0kL1mN', 'CLIENT'),
-(3, 'Екатерина', 'Петрова', 'ekaterina@test.ru', '+7-999-333-33-33', '$2a$10$0U3.8X7L9m5j4J0s1Z2B1.wYeNoPrStV3aD5xE8fG9hI0jK1lM2nO', 'CLIENT'),
-(4, 'Александр', 'Иванов', 'alexander@test.ru', '+7-999-444-44-44', '$2a$10$1V4.9Y8M0n6k5K1t2A3C2.xZfOpQsTuW4bE6yF9gH0iJ1kL2mN3oP', 'CLIENT');
+(1, 'Ольга', 'Смирнова', 'olga@test.ru', '+7-999-111-11-11', '$2a$10$N9qo8uLOickgx2ZMRZoMye0nX34UKrQ9Qd2Z4I.2KRBV6KbGJQ1qW', 'CLIENT'),
+(2, 'Дмитрий', 'Васильев', 'dmitry@test.ru', '+7-999-222-22-22', '$2a$10$N9qo8uLOickgx2ZMRZoMye0nX34UKrQ9Qd2Z4I.2KRBV6KbGJQ1qW', 'CLIENT'),
+(3, 'Екатерина', 'Петрова', 'ekaterina@test.ru', '+7-999-333-33-33', '$2a$10$N9qo8uLOickgx2ZMRZoMye0nX34UKrQ9Qd2Z4I.2KRBV6KbGJQ1qW', 'CLIENT'),
+(4, 'Александр', 'Иванов', 'alexander@test.ru', '+7-999-444-44-44', '$2a$10$N9qo8uLOickgx2ZMRZoMye0nX34UKrQ9Qd2Z4I.2KRBV6KbGJQ1qW', 'CLIENT');
 
 -- Записи на услуги
 INSERT INTO appointment (id, date_time, client_id, master_id, service_id, status, notes) VALUES
