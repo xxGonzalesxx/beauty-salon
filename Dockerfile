@@ -1,26 +1,12 @@
-# Используем официальный образ Java
-FROM openjdk:21-jdk-slim
-
-# Устанавливаем метаданные
-LABEL maintainer="Beauty Salon Team"
-LABEL description="Beauty Salon Booking System"
-
-# Создаем пользователя для безопасности (не root)
-RUN useradd -m -u 1000 spring
-USER spring
-
-# Рабочая директория
+# Stage 1: Build the application
+FROM maven:3.9.9-eclipse-temurin-21 AS builder
 WORKDIR /app
+COPY . .
+RUN mvn clean package -DskipTests
 
-# Копируем JAR файл
-COPY --chown=spring:spring target/beauty-salon-0.0.1-SNAPSHOT.jar app.jar
-
-# Открываем порт
+# Stage 2: Run the application
+FROM eclipse-temurin:21-jdk
+WORKDIR /app
+COPY --from=builder /app/target/beauty-salon-0.0.1-SNAPSHOT.jar app.jar
 EXPOSE 8080
-
-# Здоровье приложения (health check)
-HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
-  CMD curl -f http://localhost:8080/ || exit 1
-
-# Запускаем приложение с оптимизациями
-ENTRYPOINT ["java", "-jar", "-Dspring.profiles.active=docker", "-Djava.security.egd=file:/dev/./urandom", "app.jar"]
+ENTRYPOINT ["java", "-jar", "app.jar"]
