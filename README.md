@@ -54,4 +54,4 @@ docker-compose down
 # Просмотр логов
 docker-compose logs -f
 👨‍💻 Автор
-xxGonzalesxx
+Kristina
